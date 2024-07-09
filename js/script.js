@@ -35,4 +35,24 @@ function numberGenerator() {
     }
 }
 
+// Creo una funzione per chiedere all'utente di inserire 5 numeri
+function insertNumbers() {
+    while (userNumbers.length < 5) {
+        let userNumber = parseInt(prompt('Inserisci qui i numeri uno alla volta'));
+        
+        // Controllo se il numero inserito è valido
+        if (!isNaN(userNumber)) {
+            userNumbers.push(userNumber);
+        } else {
+            alert('Per favore, inserisci un numero valido.');
+        }
+    }
+    return userNumbers;
+}
+
+// Chiamo la funzione 
+insertNumbers();
+
+// Stampo l'array di numeri inseriti dall'utente per verifica
+console.log(userNumbers);
 
