@@ -14,15 +14,17 @@ console.log(numbers);
 const numbersElement = document.getElementById('numbers');
 
 // Aggiorno il contenuto dell'elemento <p> con i numeri generati
-numbersElement.innerHTML = numbers
+numbersElement.innerHTML = numbers.join(', ');
 
-
-// imposto un timer per far sarire i numeri//
-
+// Imposto un timer per far sparire i numeri
 setTimeout(function(){
-    numbersElement.remove(numbers)
-   }, 3000);
-   
+    numbersElement.innerHTML = ''; // Rimuove il contenuto dell'elemento <p>
+}, 30000);
+
+// Imposto un timer per chiedere all'utente di inserire 5 numeri dopo 30 secondi
+setTimeout(function() {
+    insertNumbers();
+}, 30000);
 
 // Creo una funzione per generare i cinque numeri casuali
 function numberGenerator() {
@@ -47,12 +49,13 @@ function insertNumbers() {
             alert('Per favore, inserisci un numero valido.');
         }
     }
-    return userNumbers;
+
+    // Stampo l'array di numeri inseriti dall'utente per verifica
+    console.log(userNumbers);
 }
 
-// Chiamo la funzione 
-insertNumbers();
+// Rimuovo la chiamata diretta a `insertNumbers`
+// insertNumbers();
 
 // Stampo l'array di numeri inseriti dall'utente per verifica
 console.log(userNumbers);
-
