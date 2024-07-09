@@ -5,8 +5,8 @@ const userNumbers = [];
 
 console.log(numbers);
 
-// Creo un array vuoto per confrontare i numeri//
-let guessed = []
+// Creo un array vuoto per confrontare i numeri
+let guessed = [];
 
 // Genero i numeri casuali
 numberGenerator();
@@ -15,24 +15,27 @@ numberGenerator();
 console.log(numbers);
 
 const numbersElement = document.getElementById('numbers');
+const result = document.getElementById('user-score');
 
 // Aggiorno il contenuto dell'elemento <p> con i numeri generati
 numbersElement.innerHTML = numbers.join(', ');
 
 // Imposto un timer per far sparire i numeri
-setTimeout(function(){
+setTimeout(function() {
     numbersElement.innerHTML = ''; // Rimuove il contenuto dell'elemento <p>
 }, 30000);
 
 // Imposto un timer per chiedere all'utente di inserire 5 numeri dopo 30 secondi
 setTimeout(function() {
     insertNumbers();
-}, 50000);
+}, 30000);
 
-setTimeout(function(){
-    decreting();
-    console.log(guessed)
-},7000);
+// Imposto un timer per controllare i numeri indovinati dopo 35 secondi
+setTimeout(function() {
+    checking();
+    console.log(guessed);
+    result.innerHTML = 'Complimenti, hai indovinato i seguenti numeri: ' + guessed.join(', ');
+}, 35000);
 
 // Creo una funzione per generare i cinque numeri casuali
 function numberGenerator() {
@@ -62,17 +65,14 @@ function insertNumbers() {
     console.log(userNumbers);
 }
 
-// Inserisco una funzione con ciclo for per iterare i numeri generati, nel caso fossero presenti li pusho nell'array//
-function decreting(){
-    for (i = 0; i < numbers.length; i++){
-        if (numbers.includes(userNumbers[i])){
-            guessed.push(userNumbers[i])
+// Funzione per controllare i numeri indovinati
+function checking() {
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers.includes(userNumbers[i])) {
+            guessed.push(userNumbers[i]);
         }
     }
 }
-
-// Rimuovo la chiamata diretta a `insertNumbers`
-// insertNumbers();
 
 // Stampo l'array di numeri inseriti dall'utente per verifica
 console.log(userNumbers);
