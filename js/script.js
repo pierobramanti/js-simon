@@ -17,6 +17,13 @@ const numbersElement = document.getElementById('numbers');
 numbersElement.innerHTML = numbers
 
 
+// imposto un timer per far sarire i numeri//
+
+setTimeout(function(){
+    numbersElement.remove(numbers)
+   }, 3000);
+   
+
 // Creo una funzione per generare i cinque numeri casuali
 function numberGenerator() {
     while (numbers.length < 5) {
